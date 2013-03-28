@@ -237,9 +237,9 @@ public final class XPathHelper {
 	 * @return position of xpath element, if fails returns -1
 	 **/
 	public static int getXPathLocation(String dom, String xpath) {
-		String dom_lower = dom.toLowerCase();
-		String xpath_lower = xpath.toLowerCase();
-		String[] elements = xpath_lower.split("/");
+		String domLower = dom.toLowerCase();
+		String xpathLower = xpath.toLowerCase();
+		String[] elements = xpathLower.split("/");
 		int pos = 0;
 		int temp;
 		int number;
@@ -258,7 +258,7 @@ public final class XPathHelper {
 				}
 				for (int i = 0; i < number; i++) {
 					// find new open element
-					temp = dom_lower.indexOf("<" + stripEndSquareBrackets(element), pos);
+					temp = domLower.indexOf("<" + stripEndSquareBrackets(element), pos);
 
 					if (temp > -1) {
 						pos = temp + 1;
@@ -266,7 +266,7 @@ public final class XPathHelper {
 						// if depth>1 then goto end of current element
 						if (number > 1 && i < number - 1) {
 							pos =
-							        getCloseElementLocation(dom_lower, pos,
+							        getCloseElementLocation(domLower, pos,
 							                stripEndSquareBrackets(element));
 						}
 
